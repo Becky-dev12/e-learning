@@ -36,7 +36,8 @@ function App() {
 
   return (
     <ThemeProvider>
-      <Router basename="/e-learning">
+      {/* Removed basename="/e-learning" so routes match perfectly on Vercel's root domains */}
+      <Router> 
         <div className="App">
           {isAuthenticated && <Navigation onLogout={handleLogout} />}
           <Routes>
