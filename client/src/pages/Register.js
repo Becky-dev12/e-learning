@@ -28,18 +28,27 @@ function Register({ setIsAuthenticated, setCurrentUser }) {
       return;
     }
 
+    if (formData.firstName.trim() === '' || formData.lastName.trim() === '') {
+      setError('First and Last name are required');
+      return;
+    }
+
     setLoading(true);
 
     try {
       const { confirmPassword, ...registrationData } = formData;
+      console.log('Sending registration data:', registrationData);
       const response = await studentAPI.register(registrationData);
+      console.log('Registration successful:', response.data);
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('user', JSON.stringify(response.data.student));
       setIsAuthenticated(true);
       setCurrentUser(response.data.student);
       navigate('/dashboard');
     } catch (err) {
-      setError(err.response?.data?.message || 'Registration failed');
+      console.error('Registration error:', err);
+      const errorMessage = err.response?.data?.message || err.message || 'Registration failed. Please check if the server is running.';
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }

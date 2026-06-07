@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:5000/api';
+// Swapped localhost for your live Render backend server URL
+const API_BASE_URL = 'https://e-learning-fby2.onrender.com/api';
 
 // Course API calls
 export const courseAPI = {
