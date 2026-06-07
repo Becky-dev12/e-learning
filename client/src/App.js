@@ -9,7 +9,7 @@ import Dashboard from './pages/Dashboard';
 import Courses from './pages/Courses';
 import MySchedule from './pages/MySchedule';
 import AcademicPlan from './pages/AcademicPlan';
-CDATASection.apply
+
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('token'));
   const [currentUser, setCurrentUser] = useState(null);
